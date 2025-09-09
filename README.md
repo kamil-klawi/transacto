@@ -31,7 +31,7 @@ See [LICENSE](LICENSE) for more information.
 
 ## Description
 
-Transacto is a banking transaction system that enables management of bank accounts, execution of transfers, review of transaction history, and verification of data accuracy. The system ensures operation security, automatic validation, and full control over the flow of funds.
+Transacto is a student project. It is a banking transaction system designed to enable management of bank accounts, execution of transfers, review of transaction history and verification of data accuracy. The system emphasizes operational security, automatic validation and full control over the flow of funds.
 
 ---
 
