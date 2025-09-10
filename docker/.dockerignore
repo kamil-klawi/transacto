@@ -1,0 +1,83 @@
+#
+# \file .dockerignore
+# \date 10-09-2025
+#
+
+#
+# \brief Common system and temp files
+# 
+# These files are created by OS or editors
+#
+**/.DS_Store
+**/Thumbs.db
+**/*.log
+**/*.tmp
+**/*.swp
+**/*.swo
+**/*.bak
+**/node_modules
+**/.env
+**/.env.local
+**/.env.*.local
+
+#
+# \brief Git files
+#
+# Ignore git metadata and rules
+#
+.git
+.gitignore
+
+#
+# \brief ASP.NET Core build/cache artifacts
+#
+# Ignore ASP.NET Core build and cache folders
+#
+**/bin
+**/obj
+**/*.user
+**/*.suo
+**/*.pdb
+**/*.db
+**/TestResults
+**/*.vspscc
+**/*.vssscc
+**/.vs/
+**/*.nupkg
+**/packages/
+**/.vscode/
+**/Properties/launchSettings.json
+
+#
+# \brief Next.js build/cache artifacts
+#
+# Ignore Next.js build output and caches
+#
+**/.next
+**/.turbo
+**/.vercel
+**/.cache
+**/out
+**/dist
+**/build
+**/yarn.lock
+**/package-lock.json
+**/pnpm-lock.yaml
+
+#
+# \brief PostgreSQL volumes and dumps
+#
+# Ignore local database files, volumes, and manual dumps
+#
+**/pg_data/
+**/postgres-data/
+**/*.sql
+**/*.dump
+
+#
+# \brief Docker configuration artifacts
+#
+# Ignore override files or backup versions of Dockerfiles
+#
+docker-compose.override.yml
+Dockerfile.*.bak

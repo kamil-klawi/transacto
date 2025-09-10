@@ -1,0 +1,38 @@
+#
+# \file compose.yaml
+# \brief Docker Compose services configuration for the Transacto application
+#
+# This file defines a PostgreSQL service container
+#
+# \date 10-09-2025
+#
+
+services:
+    postgres:
+        image: postgres:17
+        container_name: transacto-db
+        restart: unless-stopped
+        environment:
+            - POSTGRES_USER: ${DB_USERNAME}
+            - POSTGRES_PASSWORD: ${DB_PASSWORD}
+            - POSTGRES_DB: ${DB_DATABASE}
+        volumes:
+            - postgres_data:/var/lib/postgresql/data
+            - ../backup:/backup
+        ports:
+            - "5432:5432"
+        healthcheck:
+            test: ["CMD-SHELL", "pg_isready -U ${DB_USERNAME} -d ${DB_DATABASE}"]
+            interval: 10s
+            timeout: 5s
+            retries: 5
+            start_period: 10s
+        networks:
+            - app-network
+
+networks:
+    app-network:
+        driver: bridge
+
+volumes:
+    postgres_data:
