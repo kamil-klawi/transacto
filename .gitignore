@@ -91,7 +91,7 @@ docker-compose.override.yaml
 docker-compose*.yml
 docker-compose*.yaml
 !docker/
-Dockerfile.*
+!Dockerfile.*
 .env
 
 # Python
