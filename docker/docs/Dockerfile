@@ -1,32 +1,28 @@
 #
-# \file Dockerfile.frontend
-# \brief Dockerfile to create image for building and running a frontend application
+# \file Dockerfile
+# \brief Dockerfile to create an image for building and running the documentation site
 #
-# This Dockerfile implements a multi-stage build:
-# - Uses Node.js Alpine image to install dependencies with pnpm and build the frontend
-# - Creates a production image running the built app under a non-root user for security
+# Exposes port 5000 for the documentation service
 #
-# Exposes port 3000 for frontend service
+# \date 13-09-2025
 #
-# \date 10-09-2025
-#
+
+ARG NODE_VERSION=22.19-alpine
 
 #
 # BUILD
 #
-ARG NODE_VERSION=22.19-alpine
-
 FROM node:$NODE_VERSION AS builder
 
 RUN corepack enable && corepack prepare pnpm@10.12.4 --activate
 
 WORKDIR /app
 
-COPY package.json pnpm-lock.yaml ./
+COPY docs/package.json docs/pnpm-lock.yaml ./
 
 RUN pnpm install --frozen-lockfile
 
-COPY . .
+COPY docs .
 
 RUN pnpm build
 
@@ -49,6 +45,6 @@ RUN chown -R app:app /app
 
 USER app
 
-EXPOSE 3000
+EXPOSE 5000
 
 CMD ["pnpm", "start"]
