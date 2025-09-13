@@ -2,20 +2,39 @@
 # \file compose.yaml
 # \brief Docker Compose services configuration for the Transacto application
 #
-# This file defines a PostgreSQL service container
+# This file defines containerized services required to run the Transacto application
+# in a development or testing environment. It includes:
+#   - A PostgreSQL database container with configurable credentials and health checks
+#   - A backend service with port mapping and build context
+#   - A shared Docker network for service communication
+#   - Persistent volume configuration for PostgreSQL data storage
 #
 # \date 10-09-2025
+# \updated 13-09-2025
 #
 
 services:
+    backend:
+        build:
+            context: ../apps/backend
+            dockerfile: ./backend/Dockerfile
+        container_name: transacto-backend
+        ports:
+            - "8080:8080"
+            - "8081:8081"
+        depends_on:
+            - postgres
+        networks:
+            - app-network
+
     postgres:
         image: postgres:17
         container_name: transacto-db
         restart: unless-stopped
         environment:
-            - POSTGRES_USER: ${DB_USERNAME}
-            - POSTGRES_PASSWORD: ${DB_PASSWORD}
-            - POSTGRES_DB: ${DB_DATABASE}
+            - POSTGRES_USER=${DB_USERNAME}
+            - POSTGRES_PASSWORD=${DB_PASSWORD}
+            - POSTGRES_DB=${DB_DATABASE}
         volumes:
             - postgres_data:/var/lib/postgresql/data
             - ../backup:/backup
