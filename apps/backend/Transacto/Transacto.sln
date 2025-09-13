@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transacto.API", "Transacto.API\Transacto.API.csproj", "{C881F083-34F3-474F-8C55-F9FDCEF6D7A2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transacto.Application", "Transacto.Application\Transacto.Application.csproj", "{291FFA4C-0C29-414F-90E1-7D7637715CA2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transacto.Domain", "Transacto.Domain\Transacto.Domain.csproj", "{6393AAB5-07AD-4732-B12F-79FB5BE9C589}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transacto.Infrastructure", "Transacto.Infrastructure\Transacto.Infrastructure.csproj", "{FA335AB4-3774-4216-BB41-C34C75D8C2B8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C881F083-34F3-474F-8C55-F9FDCEF6D7A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C881F083-34F3-474F-8C55-F9FDCEF6D7A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C881F083-34F3-474F-8C55-F9FDCEF6D7A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C881F083-34F3-474F-8C55-F9FDCEF6D7A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{291FFA4C-0C29-414F-90E1-7D7637715CA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{291FFA4C-0C29-414F-90E1-7D7637715CA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{291FFA4C-0C29-414F-90E1-7D7637715CA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{291FFA4C-0C29-414F-90E1-7D7637715CA2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6393AAB5-07AD-4732-B12F-79FB5BE9C589}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6393AAB5-07AD-4732-B12F-79FB5BE9C589}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6393AAB5-07AD-4732-B12F-79FB5BE9C589}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6393AAB5-07AD-4732-B12F-79FB5BE9C589}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA335AB4-3774-4216-BB41-C34C75D8C2B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA335AB4-3774-4216-BB41-C34C75D8C2B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA335AB4-3774-4216-BB41-C34C75D8C2B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA335AB4-3774-4216-BB41-C34C75D8C2B8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
