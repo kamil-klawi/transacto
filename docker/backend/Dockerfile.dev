@@ -14,24 +14,18 @@ ARG DOTNET_VERSION=8.0
 
 FROM mcr.microsoft.com/dotnet/sdk:$DOTNET_VERSION AS dev
 
-RUN addgroup -S app && adduser -S -G app app
-
 WORKDIR /src
 
-COPY apps/backend/Transacto.sln ./
-COPY apps/backend/Transacto.API/Transacto.API.csproj ./Transacto.API/
-COPY apps/backend/Transacto.Application/Transacto.Application.csproj ./Transacto.Application/
-COPY apps/backend/Transacto.Domain/Transacto.Domain.csproj ./Transacto.Domain/
-COPY apps/backend/Transacto.Infrastructure/Transacto.Infrastructure.csproj ./Transacto.Infrastructure/
+COPY apps/backend/Transacto/Transacto.sln ./
+COPY apps/backend/Transacto/Transacto.API/Transacto.API.csproj ./Transacto.API/
+COPY apps/backend/Transacto/Transacto.Application/Transacto.Application.csproj ./Transacto.Application/
+COPY apps/backend/Transacto/Transacto.Domain/Transacto.Domain.csproj ./Transacto.Domain/
+COPY apps/backend/Transacto/Transacto.Infrastructure/Transacto.Infrastructure.csproj ./Transacto.Infrastructure/
 
 RUN dotnet restore
 
-COPY apps/backend/ ./
+COPY apps/backend/Transacto/ ./
 
-RUN chown -R app:app /app
+EXPOSE 5241
 
-USER app
-
-EXPOSE 8080
-
-CMD ["dotnet", "watch", "--project", "Transacto.API", "run", "--urls", "http://0.0.0.0:8080"]
+CMD ["dotnet", "watch", "--project", "Transacto.API", "run", "--urls", "http://0.0.0.0:5241"]

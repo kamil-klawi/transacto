@@ -16,12 +16,11 @@
 services:
     backend:
         build:
-            context: ../apps/backend
-            dockerfile: ./backend/Dockerfile
+          context: ../
+          dockerfile: docker/backend/Dockerfile.dev
         container_name: transacto-backend
         ports:
-            - "8080:8080"
-            - "8081:8081"
+            - "5241:5241"
         depends_on:
             - postgres
         networks:
