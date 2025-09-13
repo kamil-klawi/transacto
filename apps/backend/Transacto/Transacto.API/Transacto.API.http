@@ -1,0 +1,6 @@
+@Transacto.API_HostAddress = http://localhost:5241
+
+GET {{Transacto.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
