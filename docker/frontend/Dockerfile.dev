@@ -1,0 +1,29 @@
+#
+# \file Dockerfile.dev
+# \brief Dockerfile used to build a development image
+#
+# This Dockerfile sets up the environment required for application development
+# It installs all necessary dependencies and tools to enable local development workflows.
+# 
+# Exposes port 3001 for frontend development
+#
+# \date 13-09-2025
+#
+
+ARG NODE_VERSION=22.19-alpine
+
+FROM node:$NODE_VERSION AS development
+
+RUN corepack enable && corepack prepare pnpm@10.12.4 --activate
+
+WORKDIR /app
+
+COPY apps/frontend/package.json apps/frontend/pnpm-lock.yaml ./
+
+RUN pnpm install
+
+COPY apps/frontend .
+
+EXPOSE 3001
+
+CMD ["pnpm", "dev"]
