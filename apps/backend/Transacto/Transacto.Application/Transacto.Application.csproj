@@ -6,4 +6,8 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Transacto.Domain\Transacto.Domain.csproj" />
+    </ItemGroup>
+
 </Project>
