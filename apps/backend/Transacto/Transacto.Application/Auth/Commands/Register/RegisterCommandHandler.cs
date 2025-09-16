@@ -13,7 +13,6 @@ using AutoMapper;
 using MediatR;
 using Transacto.Application.Auth.Dtos;
 using Transacto.Application.Auth.Interfaces;
-using Transacto.Domain.Users.Entities;
 using Transacto.Domain.Users.Repositories;
 
 namespace Transacto.Application.Auth.Commands.Register;
@@ -30,7 +29,7 @@ public class RegisterCommandHandler(
         if (existingUser != null)
             return AuthResult.Failure($"{nameof(existingUser.Email)} does already exists");
         
-        var user = mapper.Map<User>(request);
+        var user = mapper.Map<Domain.Users.Entities.User>(request);
         await userRepository.CreateAsync(user);
         var token = tokenService.GenerateToken(user);
         return AuthResult.SuccessResult(user.Id, user.Email, token);
