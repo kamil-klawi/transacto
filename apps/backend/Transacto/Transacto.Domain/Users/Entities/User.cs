@@ -6,6 +6,7 @@
  * all user-related data and behavior within the domain model
  * 
  * \date 14-09-2025
+ * \updated 16-09-2025
  */
 
 using Transacto.Domain.Users.ValueObjects;
@@ -66,5 +67,10 @@ public class User
     public void ChangePassword(PasswordHash newPassword)
     {
         PasswordHash = newPassword;
+    }
+    
+    public void ChangeEmail(Email newEmail)
+    {
+        Email = newEmail;
     }
 }
