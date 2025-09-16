@@ -11,10 +11,14 @@
  * - POST /api/auth/logout – Log out the current user
  *
  * \date 15-09-2025
+ * \updated 16-09-2025
  */
 
+using System.Security.Claims;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Transacto.Application.Auth.Commands.DisableTwoFactor;
+using Transacto.Application.Auth.Commands.EnableTwoFactor;
 using Transacto.Application.Auth.Commands.Login;
 using Transacto.Application.Auth.Commands.Register;
 
@@ -66,5 +70,34 @@ public class AuthController(IMediator mediator) : ControllerBase
     {
         Response.Cookies.Delete("access_token");
         return Ok(new { message = "Logged out" });
+    }
+
+    [HttpPost("twofactor/enable")]
+    public async Task<IActionResult> EnableTwoFactorAuth()
+    {
+        var userIdClaim = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        if (!Guid.TryParse(userIdClaim, out var userId))
+            return Unauthorized();
+
+        var secretKey = await mediator.Send(new EnableTwoFactorCommand(userId));
+        return Ok(new
+        {
+            message = "Two-Factor Authentication enabled",
+            secretKey
+        });
+    }
+    
+    [HttpPost("twofactor/disable")]
+    public async Task<IActionResult> VerifyTwoFactorAuth()
+    {
+        var userIdClaim = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        if (!Guid.TryParse(userIdClaim, out var userId))
+            return Unauthorized();
+
+        await mediator.Send(new DisableTwoFactorCommand(userId));
+        return Ok(new
+        {
+            message = "Two-Factor Authentication disabled"
+        });
     }
 }
